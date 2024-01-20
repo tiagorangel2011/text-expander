@@ -1,0 +1,50 @@
+{
+	"name": "Text Expand", 
+  "short_name": "Text Expand", 
+  "version": "0.0.1",
+  "manifest_version": 2, 
+  "description": "Easily expand your text with shortcuts like", 
+  "icons": {
+	  "128": "images/logo/icon.svg"
+	}, 
+  "default_locale": "en",
+  "background": {
+		"scripts": [
+      "js/constants.js", 
+      "js/background.js"
+		]
+	}, 
+  "browser_action": {
+    "default_icon": {
+      "38": "images/logo/icon.svg"
+    }, 
+    "default_title": "Show configuration"
+  },
+  "options_ui": {
+    "page": "options.html"
+  },
+  "content_scripts": [{
+		"matches": [ "<all_urls>" ], 
+    "js": [
+			"js/third_party/jquery-3.4.1.min.js",
+      "js/third_party/moment-with-locales.min.js",
+      "js/constants.js", 
+      "js/expander.js"
+		], 
+    "run_at": "document_start"
+	}], 
+  "permissions": [
+		"tabs", 
+    "storage", 
+    "unlimitedStorage", 
+    "<all_urls>", 
+    "clipboardRead"
+	], 
+  "optional_permissions": [],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "textexpand@extensions.tiagorangel.com",
+      "strict_min_version": "42.0"
+    }
+  }
+}
